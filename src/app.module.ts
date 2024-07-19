@@ -12,6 +12,9 @@ import { InformationModule } from './information/information.module';
 import { TrainingFieldsModule } from './training-fields/training-fields.module';
 import { AboutUsModule } from './about-us/about-us.module';
 import { AdmissionsModule } from './admissions/admissions.module';
+import { EventModule } from './event/event.module';
+import { PartnerModule } from './partner/partner.module';
+import { LinkModule } from './link/link.module';
 
 
 @Module({
@@ -29,6 +32,9 @@ import { AdmissionsModule } from './admissions/admissions.module';
     TrainingFieldsModule,
     AboutUsModule,
     AdmissionsModule,
+    EventModule,
+    PartnerModule,
+    LinkModule,
   ],  
   controllers: [],
   providers: [],

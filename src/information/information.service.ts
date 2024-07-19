@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { InforForUpdate } from './dto/InforForUpdate';
 import { InforForResponse } from './dto/InforForResponse';
+import { InforForCreate } from './dto/InforForCreate';
 
 @Injectable()
 export class InformationService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async createInformation(inforForCreate: any) {
+  async createInformation(inforForCreate: InforForCreate) {
     return await this.prismaService.information.create({
       data: {
         title: inforForCreate.title,

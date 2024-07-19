@@ -48,11 +48,10 @@ model News {
   title       String
   body        String
   views       Int?
-  typenewsId  String?
-  typenews    TypeNews? @relation (fields: [typenewsId], references: [id])
+  typenewsId  String
+  typenews    TypeNews @relation (fields: [typenewsId], references: [id])
   image       Image[]
-  accountId   String
-  account     Account @relation(fields: [accountId], references: [id])
+  account     Account[]
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
 }
@@ -140,6 +139,16 @@ model Image {
   created_at            DateTime   @default(now())
   updated_at            DateTime   @updatedAt
 }
+
+model Event {
+  id          String  @id @default(uuid())
+  accountId   String
+  title       String
+  content     String
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+}
+
 
 model Admissions {
   id              String  @id @default(uuid())

@@ -12,10 +12,12 @@ import { RoleForPost } from './dto/RoleForPost';
 import { AuthenticationGuard } from 'src/guard/authentication.guard';
 import { AuthorizationGuard } from 'src/guard/authorization.guard';
 import { RoleService } from './role.service';
+import { Roles } from 'src/decorator/roles.decorator';
+import { Role } from 'src/decorator/role.enum';
 
 @Controller('roles')
-// @UseGuards(AuthenticationGuard, AuthorizationGuard)
-// @Roles(Role.Admin)
+@UseGuards(AuthenticationGuard, AuthorizationGuard)
+@Roles(Role.Admin)
 export class RoleController {
   constructor(private roleService: RoleService) {}
   @Get()

@@ -11,7 +11,7 @@ import {
   import { AuthService } from './auth.service';
   import { AccountForPost } from './dto/AccountForPost';
   import { AccountForToken } from './dto/AccountForToken';
-import { LocalAuthGuard } from './local-auth.guard';
+  import { LocalAuthGuard } from './local-auth.guard';
   
   @Controller('auth')
   export class AuthController {

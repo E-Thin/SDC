@@ -1,15 +1,18 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { TrainingFieldsService } from './training-fields.service';
 import { TrainingFieldsForUpdate } from './dto/TrainingFieldsForUpdate';
 import { TrainingFieldsForCreate } from './dto/TrainingFieldsForCreate';
 import { Role } from 'src/decorator/role.enum';
 import { Roles } from 'src/decorator/roles.decorator';
+import { AuthenticationGuard } from 'src/guard/authentication.guard';
+import { AuthorizationGuard } from 'src/guard/authorization.guard';
 
 @Controller('training-fields')
 export class TrainingFieldsController {
     constructor(private readonly trainingFieldsService: TrainingFieldsService) {}
 
     @Post()
+    @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
     async createTrainingFields(@Body() trainingFieldsForCreate: TrainingFieldsForCreate) {
         return this.trainingFieldsService.createTrainingFields(trainingFieldsForCreate);
@@ -26,6 +29,7 @@ export class TrainingFieldsController {
     }
 
     @Patch(':id')
+    @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
     async updateTrainingFields(@Param() id: string,
     @Body() trainingFieldsForUpdate: TrainingFieldsForUpdate) {
