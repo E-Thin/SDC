@@ -15,6 +15,9 @@ import { AdmissionsModule } from './admissions/admissions.module';
 import { EventModule } from './event/event.module';
 import { PartnerModule } from './partner/partner.module';
 import { LinkModule } from './link/link.module';
+// import { ImagesModule } from './images/images.module';
+// import { UploadModule } from './upload/upload.module';
+import { SearchModule } from './search/search.module';
 
 
 @Module({
@@ -35,6 +38,9 @@ import { LinkModule } from './link/link.module';
     EventModule,
     PartnerModule,
     LinkModule,
+    // ImagesModule,
+    // UploadModule,
+    SearchModule,
   ],  
   controllers: [],
   providers: [],

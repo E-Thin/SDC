@@ -128,6 +128,8 @@ model Image {
   news                  News? @relation(fields: [newsId], references: [id])
   aboutUs               AboutUs[]
   partner               Partner[]
+  typeImageId           String
+  typeImage             TypeImage? @relation(fields: [typeImageId], references: [id])
   communicateId         String?
   communicate           Communicate? @relation(fields: [communicateId], references: [id])
   trainingfieldsId      String?
@@ -138,6 +140,15 @@ model Image {
   admission             Admissions? @relation(fields: [admissionsId], references: [id])
   created_at            DateTime   @default(now())
   updated_at            DateTime   @updatedAt
+}
+
+model TypeImage {
+  id              String  @id @default(uuid())
+  name            String
+  description     String
+  image           Image[]
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @updatedAt
 }
 
 model Event {

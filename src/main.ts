@@ -9,6 +9,7 @@ async function bootstrap() {
   dotenv.config({ path: `.env.local`, override: true });
 
   const app = await NestFactory.create(AppModule);
+  app.enableCors({ origin: '*' });
   await app.listen(3003);
 
   console.log('status server: ', process.env.NODE_ENV);
