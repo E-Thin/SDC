@@ -37,7 +37,7 @@ export class SearchService {
   ): Promise<Array<TitleSearchForResponse>> {
     try {
       const regex = new RegExp(keyword, 'i');
-      const news = await this.prismaService.news.findMany({
+      const news = await this.prismaService.trainingFields.findMany({
         where: {
           title: {
             contains: regex.source,
@@ -65,7 +65,7 @@ export class SearchService {
   ): Promise<Array<TitleSearchForResponse>> {
     try {
       const regex = new RegExp(keyword, 'i');
-      const news = await this.prismaService.news.findMany({
+      const news = await this.prismaService.event.findMany({
         where: {
           title: {
             contains: regex.source,
