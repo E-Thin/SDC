@@ -10,14 +10,15 @@ import { NewsModule } from './news/news.module';
 import { NotifiModule } from './notifi/notifi.module';
 import { InformationModule } from './information/information.module';
 import { TrainingFieldsModule } from './training-fields/training-fields.module';
-import { AboutUsModule } from './about-us/about-us.module';
+// import { AboutUsModule } from './about-us/about-us.module';
 import { AdmissionsModule } from './admissions/admissions.module';
 import { EventModule } from './event/event.module';
 import { PartnerModule } from './partner/partner.module';
 import { LinkModule } from './link/link.module';
-// import { ImagesModule } from './images/images.module';
-// import { UploadModule } from './upload/upload.module';
 import { SearchModule } from './search/search.module';
+import { UploadModule } from './upload/upload.module';
+import { TypeImageModule } from './type-image/type-image.module';
+import { FileModule } from './file/file.module';
 
 
 @Module({
@@ -33,14 +34,15 @@ import { SearchModule } from './search/search.module';
     NotifiModule,
     InformationModule,
     TrainingFieldsModule,
-    AboutUsModule,
+    // AboutUsModule,
     AdmissionsModule,
     EventModule,
     PartnerModule,
     LinkModule,
-    // ImagesModule,
-    // UploadModule,
     SearchModule,
+    UploadModule,
+    TypeImageModule,
+    FileModule
   ],  
   controllers: [],
   providers: [],

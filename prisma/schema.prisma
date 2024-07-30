@@ -19,6 +19,7 @@ model Account {
   email       String
   password    String
   phoneNumber String?
+  image       Image[]
   roles       Role[]
   news        News[]
   notifi      Notifi[]
@@ -84,16 +85,7 @@ model Department {
 }
 
 model Information {
-  id        String  @id @default(uuid())
-  title     String
-  body      String
-  image     Image []
-  created_at  DateTime   @default(now())
-  updated_at  DateTime   @updatedAt
-}
-
-model TrainingFields {
-  id          String @id @default (uuid())
+  id          String  @id @default(uuid())
   title       String
   body        String
   image       Image []
@@ -101,14 +93,24 @@ model TrainingFields {
   updated_at  DateTime   @updatedAt
 }
 
+model TrainingFields {
+  id                      String @id @default (uuid())
+  title                   String
+  body                    String
+  thumbnailTrainingFields String
+  image                   Image []
+  created_at              DateTime   @default(now())
+  updated_at              DateTime   @updatedAt
+}
+
 model AboutUs {
   id               String   @id @default(uuid())
   name             String
   description      String
-  imageId          String?
-  image            Image? @relation(fields: [imageId], references: [id])
-  created_at  DateTime   @default(now())
-  updated_at  DateTime   @updatedAt
+  thumbnailAboutUs String
+  image            Image[]
+  created_at       DateTime   @default(now())
+  updated_at       DateTime   @updatedAt
 }
 
 model Feature {
@@ -122,14 +124,17 @@ model Feature {
 
 model Image {
   id                    String  @id @default(uuid())
-  url                   String  @unique
-  cloudinaryId          String  @unique
+  path                  String 
+  accountId             String
+  account               Account @relation(fields: [accountId], references: [id])
   newsId                String?
   news                  News? @relation(fields: [newsId], references: [id])
-  aboutUs               AboutUs[]
-  partner               Partner[]
+  aboutUsId             String?
+  aboutUs               AboutUs? @relation(fields: [aboutUsId], references: [id])
+  partnerId             String?
+  partner               Partner? @relation(fields: [partnerId], references: [id])
   typeImageId           String
-  typeImage             TypeImage? @relation(fields: [typeImageId], references: [id])
+  typeImage             TypeImage @relation(fields: [typeImageId], references: [id])
   communicateId         String?
   communicate           Communicate? @relation(fields: [communicateId], references: [id])
   trainingfieldsId      String?
@@ -173,8 +178,8 @@ model Admissions {
 model Partner {
   id        String @id @default(uuid())
   name      String
-  imageId   String
-  image     Image @relation(fields: [imageId], references: [id])
+  thumbnailParter String
+  image     Image[]
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
 }

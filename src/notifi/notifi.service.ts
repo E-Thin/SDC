@@ -13,11 +13,7 @@ export class NotifiService {
       data: {
         title: notifiForCreate.title,
         content: notifiForCreate.content,
-        department: {
-          connect: {
-            id: notifiForCreate.departmentId,
-          },
-        },
+        departmentId: notifiForCreate.departmentId,
       },
       select: {
         id: true,

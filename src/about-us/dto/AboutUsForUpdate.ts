@@ -1,5 +1,5 @@
 export class AboutUsForUpdate {
-    name?: string
-    description?: string
-    imageId?: string
+    name?: string;
+    description?: string;
+    thumbnailAboutUs: string;
 }

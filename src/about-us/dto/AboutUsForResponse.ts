@@ -4,8 +4,5 @@ export class AboutUsForResponse {
   updated_at: Date;
   name?: string;
   description?: string;
-  image: Array<{
-    id: string;
-    url: string;
-  }>;
+  thumbnailAboutUs: string;
 }

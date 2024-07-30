@@ -1,7 +1,7 @@
 export class PartnerForResponse {
   id: string;
   name: string;
-  imageId: string;
+  thumbnailParter: string;
   created_at: Date;
   updated_at: Date;
 }

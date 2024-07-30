@@ -3,3 +3,9 @@ export class NewsForCreate {
     body: string;
     typenewsId: string;
 }
+
+export class ImageUpload {
+    accountId: string;
+    path: string;
+    typeImageId?: string;
+}

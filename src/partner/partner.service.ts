@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PartnerForUpdate } from './dto/PartnerForUpdate';
 import { PartnerForCreate } from './dto/PartnerForCreate';
+import { PartnerForResponse } from './dto/PartnerForResponse';
 
 @Injectable()
 export class PartnerService {
@@ -17,40 +18,40 @@ export class PartnerService {
       select: {
         id: true,
         name: true,
-        image: true,
+        thumbnailParter: true,
         created_at: true,
         updated_at: true,
       },
     });
   }
 
-  async addPartner(partnerForCreate: PartnerForCreate) {
+  async addPartner(partnerForCreate: PartnerForCreate): Promise<PartnerForResponse> {
     return await this.prismaService.partner.create({
       data: {
         name: partnerForCreate.name,
-        imageId: partnerForCreate.imageId,
+        thumbnailParter: partnerForCreate.thumbnailParter,
       },
       select: {
         id: true,
         name: true,
-        image: true,
+        thumbnailParter: true,
         created_at: true,
         updated_at: true,
       },
     });
   }
 
-  async updatePartner(partnerForUpdate: PartnerForUpdate, id: string) {
+  async updatePartner(partnerForUpdate: PartnerForUpdate, id: string): Promise<PartnerForResponse> {
     return await this.prismaService.partner.update({
       where: { id },
       data: {
         name: partnerForUpdate.name,
-        imageId: partnerForUpdate.imageId,
+        thumbnailParter: partnerForUpdate.thumbnailParter,
       },
       select: {
         id: true,
         name: true,
-        image: true,
+        thumbnailParter: true,
         created_at: true,
         updated_at: true,
       },

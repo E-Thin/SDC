@@ -12,7 +12,6 @@ export class NewsService {
   async getNews(): Promise <NewsForResponse[]> {
     return await this.prisma.news.findMany();
   }
-
   async getNewsById(id: string) {
     return await this.prisma.news.findUnique({
       where: { id },
@@ -20,6 +19,7 @@ export class NewsService {
         id: true,
         title: true,
         body: true,
+        views: true,
         account: true,
         created_at: true,
         typenewsId: true,
@@ -40,6 +40,7 @@ export class NewsService {
         id: true,
         title: true,
         body: true,
+        views: true,
         created_at: true,
         typenewsId: true,
       }
