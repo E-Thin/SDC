@@ -48,7 +48,7 @@ model News {
   id          String  @id @default(uuid())
   title       String
   body        String
-  views       Int?
+  views       Int?  @default(0)
   typenewsId  String
   typenews    TypeNews @relation (fields: [typenewsId], references: [id])
   image       Image[]
