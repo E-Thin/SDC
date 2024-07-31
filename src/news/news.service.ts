@@ -10,7 +10,20 @@ export class NewsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getNews(): Promise <NewsForResponse[]> {
-    return await this.prisma.news.findMany();
+    return await this.prisma.news.findMany({
+      select: {
+        id: true,
+        title: true,
+        body: true,
+        views: true,
+        account: true,
+        created_at: true,
+        typenewsId: true,
+      },
+      orderBy: {
+        created_at: 'desc',
+      }
+    });
   }
   async getNewsById(id: string) {
     return await this.prisma.news.findUnique({

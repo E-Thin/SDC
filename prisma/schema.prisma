@@ -67,7 +67,7 @@ model TypeNews {
 model Notifi {
   id              String  @id @default(uuid())
   title           String
-  content         String  @@db.Text
+  content         String  @db.Text
   account         Account[]
   departmentId    String
   department      Department? @relation (fields: [departmentId], references: [id])
