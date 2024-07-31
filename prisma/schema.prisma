@@ -47,7 +47,7 @@ model Role {
 model News {
   id          String  @id @default(uuid())
   title       String
-  body        String
+  body        String  @db.Text
   views       Int?  @default(0)
   typenewsId  String
   typenews    TypeNews @relation (fields: [typenewsId], references: [id])
@@ -67,7 +67,7 @@ model TypeNews {
 model Notifi {
   id              String  @id @default(uuid())
   title           String
-  content         String
+  content         String  @@db.Text
   account         Account[]
   departmentId    String
   department      Department? @relation (fields: [departmentId], references: [id])
@@ -87,7 +87,7 @@ model Department {
 model Information {
   id          String  @id @default(uuid())
   title       String
-  body        String
+  body        String  @db.Text
   image       Image []
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
@@ -96,7 +96,7 @@ model Information {
 model TrainingFields {
   id                      String @id @default (uuid())
   title                   String
-  body                    String
+  body                    String  @db.Text
   thumbnailTrainingFields String
   image                   Image []
   created_at              DateTime   @default(now())
@@ -111,15 +111,6 @@ model AboutUs {
   image            Image[]
   created_at       DateTime   @default(now())
   updated_at       DateTime   @updatedAt
-}
-
-model Feature {
-  id                String   @id @default(uuid())
-  name              String
-  thumbnailFileName String
-  url               String
-  created_at        DateTime @default(now())
-  updated_at        DateTime @updatedAt
 }
 
 model Image {
@@ -160,7 +151,7 @@ model Event {
   id          String  @id @default(uuid())
   accountId   String
   title       String
-  content     String
+  content     String  @db.Text
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
 }
@@ -169,7 +160,7 @@ model Event {
 model Admissions {
   id              String  @id @default(uuid())
   title           String
-  body            String
+  body            String  @db.Text
   image           Image[]
   created_at      DateTime   @default(now())
   updated_at      DateTime   @updatedAt
@@ -207,7 +198,7 @@ model Student {
 model Communicate {
   id        String  @id @default(uuid())
   title     String
-  body      String
+  body      String  @db.Text
   image     Image []
   views     Int
   created_at  DateTime   @default(now())
