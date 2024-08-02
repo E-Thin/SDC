@@ -23,6 +23,7 @@ model Account {
   roles       Role[]
   news        News[]
   notifi      Notifi[]
+  contentAssetNews      ContentAssetNews[]
   refreshTokenJWT String?     @db.Text
   expriedAccessTokenJWT DateTime?
   created_at  DateTime @default(now())
@@ -57,6 +58,17 @@ model News {
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
 }
+
+
+model ContentAssetNews {
+  id         String   @id @default(uuid())
+  image      Image[]
+  accountId  String
+  account    Account  @relation(fields: [accountId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
 
 model TypeNews {
   id            String    @id @default(uuid())
@@ -120,6 +132,8 @@ model Image {
   path                  String 
   accountId             String
   account               Account @relation(fields: [accountId], references: [id])
+  contentAssetNews      ContentAssetNews? @relation(fields: [contentAssetNewsId], references: [id])
+  contentAssetNewsId    String?
   newsId                String?
   news                  News? @relation(fields: [newsId], references: [id])
   aboutUsId             String?

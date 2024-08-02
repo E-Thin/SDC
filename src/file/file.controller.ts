@@ -40,4 +40,10 @@ export class FileController {
     return await this.fileService.uploadImageAdmission(file, req?.user)
   }
 
+  @Post("/upload-image-news")
+  @UseInterceptors(FileInterceptor('image'))
+  async uploadImageNews(@UploadedFile() file: Express.Multer.File, @Request() req) {
+    return await this.fileService.uploadImageNews(file, req?.user)
+  }
+
 }

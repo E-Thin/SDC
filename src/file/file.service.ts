@@ -87,6 +87,29 @@ export class FileService {
     }
   }
 
+  async uploadImageNews(file: Express.Multer.File,
+    accountId: AccountForToken): Promise<ImageForResponse> {
+    try {
+      const image_path = await this.uploadImage(file, 'News');
+      await this.prismaService.image.create({
+        data: {
+          path: image_path,
+          accountId: accountId.id,
+          typeImageId: TYPE_IMAGE.THUMBNAIL_NEWS,
+        }
+      })
+      return {
+        fieldname: 'image',
+        url: image_path,
+        mimetype: file.mimetype,
+        originalname: file.originalname,
+        size: file.size,
+      };
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   private async uploadImage(
     file: Express.Multer.File,
     folder: string
