@@ -12,13 +12,13 @@ export class PartnerService {
     return await this.prismaService.partner.findMany();
   }
 
-  async getPartnerById(id: string) {
+  async getPartnerById(id: string): Promise<PartnerForResponse> {
     return await this.prismaService.partner.findUnique({
       where: { id },
       select: {
         id: true,
         name: true,
-        thumbnailParter: true,
+        thumbnailPartner: true,
         created_at: true,
         updated_at: true,
       },
@@ -29,12 +29,12 @@ export class PartnerService {
     return await this.prismaService.partner.create({
       data: {
         name: partnerForCreate.name,
-        thumbnailParter: partnerForCreate.thumbnailParter,
+        thumbnailPartner: partnerForCreate.thumbnailPartner,
       },
       select: {
         id: true,
         name: true,
-        thumbnailParter: true,
+        thumbnailPartner: true,
         created_at: true,
         updated_at: true,
       },
@@ -46,12 +46,12 @@ export class PartnerService {
       where: { id },
       data: {
         name: partnerForUpdate.name,
-        thumbnailParter: partnerForUpdate.thumbnailParter,
+        thumbnailPartner: partnerForUpdate.thumbnailPartner,
       },
       select: {
         id: true,
         name: true,
-        thumbnailParter: true,
+        thumbnailPartner: true,
         created_at: true,
         updated_at: true,
       },

@@ -15,6 +15,7 @@ export class NewsService {
         id: true,
         title: true,
         body: true,
+        thumbnailNews: true,
         views: true,
         account: true,
         created_at: true,
@@ -46,6 +47,7 @@ export class NewsService {
       data: {
         title: newsForCreate.title,
         body: newsForCreate.body,
+        thumbnailNews: newsForCreate.thumbnailNews,
         typenews: { connect: { id: newsForCreate.typenewsId}},
         account: { connect: { id: account.id } },
       },
@@ -53,6 +55,7 @@ export class NewsService {
         id: true,
         title: true,
         body: true,
+        thumbnailNews: true,
         views: true,
         created_at: true,
         typenewsId: true,

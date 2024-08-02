@@ -12,10 +12,12 @@ export class UploadService {
       api_secret: this.config_service.get('CLOUDINARY_API_SECRET'),
     });
   }
-  async uploadImageToCloudinary(file: Express.Multer.File): Promise<UploadApiResponse | UploadApiErrorResponse> {
+  async uploadImageToCloudinary(file: Express.Multer.File, folder: string): Promise<UploadApiResponse | UploadApiErrorResponse> {
     return new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
-        { resource_type: 'image' },
+        { resource_type: 'image' ,
+          folder: folder,
+        },
         (error, result) => {
           if (error) return reject(error);
           resolve(result);

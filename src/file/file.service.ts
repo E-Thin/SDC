@@ -18,7 +18,7 @@ export class FileService {
     account: AccountForToken,
   ): Promise<ImageForResponse> {
     try {
-      const image_path = await this.uploadImage(file);
+      const image_path = await this.uploadImage(file, 'About-Us');
       const result = await this.prismaService.image.create({
         data: {
           path: image_path,
@@ -44,7 +44,7 @@ export class FileService {
     accountId: AccountForToken,
   ): Promise<ImageForResponse> {
     try {
-      const image_path = await this.uploadImage(file);
+      const image_path = await this.uploadImage(file, 'Training-Fields');
       await this.prismaService.image.create({
         data: {
           path: image_path,
@@ -67,7 +67,7 @@ export class FileService {
   async uploadImageAdmission(file: Express.Multer.File,
     accountId: AccountForToken): Promise<ImageForResponse> {
     try {
-      const image_path = await this.uploadImage(file);
+      const image_path = await this.uploadImage(file, 'Admission');
       await this.prismaService.image.create({
         data: {
           path: image_path,
@@ -89,8 +89,9 @@ export class FileService {
 
   private async uploadImage(
     file: Express.Multer.File,
+    folder: string
   ): Promise<string> {
-    const image_path = await this.uploads.uploadImageToCloudinary(file);
+    const image_path = await this.uploads.uploadImageToCloudinary(file, folder);
     return image_path.url; 
   }
 }

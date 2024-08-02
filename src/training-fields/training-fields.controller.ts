@@ -24,21 +24,21 @@ export class TrainingFieldsController {
     }
 
     @Get(':id')
-    async getTrainingFieldsById(@Param() id: string) {
+    async getTrainingFieldsById(@Param('id') id: string) {
         return this.trainingFieldsService.getTrainingFieldsById(id);
     }
 
     @Patch(':id')
     @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
-    async updateTrainingFields(@Param() id: string,
+    async updateTrainingFields(@Param('id') id: string,
     @Body() trainingFieldsForUpdate: TrainingFieldsForUpdate) {
         return this.trainingFieldsService.updateTrainingFields(id, trainingFieldsForUpdate);
     }
 
     @Delete(':id')
     @Roles(Role.Admin)
-    async deleteTrainingFields(@Param() id: string) {
+    async deleteTrainingFields(@Param('id') id: string) {
         return this.trainingFieldsService.deleteTrainingFields(id);
     }
 }

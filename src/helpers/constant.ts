@@ -1,7 +1,7 @@
 export const TYPE_IMAGE = {
-    THUMBNAIL_ABOUT_US: 'genzmth@754235',
-    THUMBNAIL_TRAINING_FIELDS: 'genzmth@954235',
-    ADMISSION: 'genzmth@786523',
+    THUMBNAIL_ABOUT_US: 'sdc@754235',
+    THUMBNAIL_TRAINING_FIELDS: 'sdc@954235',
+    ADMISSION: 'sdc@786523',
   };
   
 

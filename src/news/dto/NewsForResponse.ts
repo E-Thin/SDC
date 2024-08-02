@@ -5,6 +5,7 @@ export class NewsForResponse {
     account?: Array<AccountBasicForResponse>;
     title: string;
     body: string;
+    thumbnailNews: string;
     views: number;
     typenewsId: string;
     created_at: Date;

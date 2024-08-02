@@ -47,6 +47,7 @@ model Role {
 model News {
   id          String  @id @default(uuid())
   title       String
+  thumbnailNews String
   body        String  @db.Text
   views       Int?  @default(0)
   typenewsId  String
@@ -69,6 +70,7 @@ model Notifi {
   title           String
   content         String  @db.Text
   account         Account[]
+  thumbnailNotifi String
   departmentId    String
   department      Department? @relation (fields: [departmentId], references: [id])
   created_at      DateTime   @default(now())
@@ -167,12 +169,18 @@ model Admissions {
 }
 
 model Partner {
-  id        String @id @default(uuid())
-  name      String
-  thumbnailParter String
-  image     Image[]
-  created_at  DateTime   @default(now())
-  updated_at  DateTime   @updatedAt
+  id                String @id @default(uuid())
+  name              String
+  thumbnailPartner  String
+  image             Image[]
+  created_at        DateTime   @default(now())
+  updated_at        DateTime   @updatedAt
+}
+
+model PageView {
+  id          String  @id @default(uuid())
+  pageName    String
+  views       Int   @default(0)
 }
 
 model Link {

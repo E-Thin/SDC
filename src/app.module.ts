@@ -10,7 +10,7 @@ import { NewsModule } from './news/news.module';
 import { NotifiModule } from './notifi/notifi.module';
 import { InformationModule } from './information/information.module';
 import { TrainingFieldsModule } from './training-fields/training-fields.module';
-// import { AboutUsModule } from './about-us/about-us.module';
+import { AboutUsModule } from './about-us/about-us.module';
 import { AdmissionsModule } from './admissions/admissions.module';
 import { EventModule } from './event/event.module';
 import { PartnerModule } from './partner/partner.module';
@@ -19,6 +19,8 @@ import { SearchModule } from './search/search.module';
 import { UploadModule } from './upload/upload.module';
 import { TypeImageModule } from './type-image/type-image.module';
 import { FileModule } from './file/file.module';
+import { ImageModule } from './image/image.module';
+import { PageViewModule } from './page-view/page-view.module';
 
 
 @Module({
@@ -34,7 +36,7 @@ import { FileModule } from './file/file.module';
     NotifiModule,
     InformationModule,
     TrainingFieldsModule,
-    // AboutUsModule,
+    AboutUsModule,
     AdmissionsModule,
     EventModule,
     PartnerModule,
@@ -42,7 +44,9 @@ import { FileModule } from './file/file.module';
     SearchModule,
     UploadModule,
     TypeImageModule,
-    FileModule
+    FileModule,
+    ImageModule,
+    PageViewModule
   ],  
   controllers: [],
   providers: [],

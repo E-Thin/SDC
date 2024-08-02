@@ -1,6 +1,7 @@
 export class NewsForCreate {
     title: string;
     body: string;
+    thumbnailNews: string;
     typenewsId: string;
 }
 
