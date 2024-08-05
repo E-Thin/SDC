@@ -9,7 +9,7 @@ import { AccountForToken } from 'src/auth/dto/AccountForToken';
 export class NewsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getNews(): Promise <NewsForResponse[]> {
+  async getNews(): Promise<NewsForResponse[]> {
     return await this.prisma.news.findMany({
       select: {
         id: true,
@@ -17,15 +17,23 @@ export class NewsService {
         body: true,
         thumbnailNews: true,
         views: true,
+        description: true,
         account: true,
         created_at: true,
-        typenewsId: true,
+        typenews: {
+          select: {
+            id: true,
+            nameTypeNews: true,
+            description: true,
+          }
+        }
       },
       orderBy: {
         created_at: 'desc',
-      }
+      },
     });
   }
+  
   async getNewsById(id: string) {
     return await this.prisma.news.findUnique({
       where: { id },
@@ -35,21 +43,36 @@ export class NewsService {
         body: true,
         views: true,
         account: true,
+        description: true,
         created_at: true,
-        typenewsId: true,
-      }
+        typenews: {
+          select: {
+            id: true,
+            nameTypeNews: true,
+            description: true,
+          }
+        }
+      },
     });
   }
 
-  async addNews( newsForCreate: NewsForCreate,
-    account: AccountForToken): Promise<NewsForResponse> {
+  async addNews(
+    newsForCreate: NewsForCreate,
+    account: AccountForToken,
+  ): Promise<NewsForResponse> {
     return await this.prisma.news.create({
       data: {
         title: newsForCreate.title,
         body: newsForCreate.body,
+        description: newsForCreate.description,
         thumbnailNews: newsForCreate.thumbnailNews,
-        typenews: { connect: { id: newsForCreate.typenewsId}},
-        account: { connect: { id: account.id } },
+        typenews: Array.isArray(newsForCreate.typenewsId)
+        ? {
+            connect: newsForCreate.typenewsId.map(id => ({ id }))
+        }
+        : {
+            connect: { id: newsForCreate.typenewsId }
+        },        account: { connect: { id: account.id } },
       },
       select: {
         id: true,
@@ -57,28 +80,46 @@ export class NewsService {
         body: true,
         thumbnailNews: true,
         views: true,
+        description: true,
         created_at: true,
-        typenewsId: true,
-      }
+        typenews: {
+          select: {
+            id: true,
+            nameTypeNews: true,
+            description: true,
+          }
+        }
+      },
     });
   }
 
   async updateNews(
     id: string,
     newsForUpdate: NewsForUpdate,
-  ): Promise<NewsForUpdate> {
+  ): Promise<NewsForResponse> {
     return await this.prisma.news.update({
       where: { id },
       data: {
         title: newsForUpdate.title,
         body: newsForUpdate.body,
-        typenewsId: newsForUpdate.typenewsId,
+        description: newsForUpdate.description,
+        typenews: Array.isArray(newsForUpdate.typenews)
+                ? {
+                    connect: newsForUpdate.typenews.map(id => ({ id }))
+                }
+                : {
+                    connect: { id: newsForUpdate.typenews }
+                },
       },
       select: {
         id: true,
         title: true,
         body: true,
-        typenewsId: true,
+        description: true,
+        views: true,
+        created_at: true,
+        thumbnailNews: true,
+        typenews: true,
       },
     });
   }
@@ -87,7 +128,7 @@ export class NewsService {
     return await this.prisma.news.delete({
       where: { id },
       select: {
-        id: true
+        id: true,
       },
     });
   }

@@ -26,7 +26,7 @@ export class DepartmentController {
     @Patch(':id')
     @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
-    async updateDepartment(@Param() id: string,
+    async updateDepartment(@Param('id') id: string,
     @Body() departmentForUpdate: DepartmentForUpdate){
         return await this.departmentService.updateDepartment(id, departmentForUpdate);
     }
@@ -34,7 +34,7 @@ export class DepartmentController {
     @Delete(':id')
     @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
-    async deleteDepartment(@Param() id: string) {
+    async deleteDepartment(@Param('id') id: string) {
         return await this.departmentService.deleteDepartment(id);
     }
 }

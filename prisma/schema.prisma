@@ -50,9 +50,9 @@ model News {
   title       String
   thumbnailNews String
   body        String  @db.Text
+  description String  @db.Text
   views       Int?  @default(0)
-  typenewsId  String
-  typenews    TypeNews @relation (fields: [typenewsId], references: [id])
+  typenews    TypeNews []
   image       Image[]
   account     Account[]
   created_at  DateTime   @default(now())
@@ -82,7 +82,6 @@ model Notifi {
   title           String
   content         String  @db.Text
   account         Account[]
-  thumbnailNotifi String
   departmentId    String
   department      Department? @relation (fields: [departmentId], references: [id])
   created_at      DateTime   @default(now())

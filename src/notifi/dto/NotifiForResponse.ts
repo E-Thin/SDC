@@ -5,7 +5,6 @@ export class NotifiForResponse {
     title: string;
     content: string;
     account?: Array<AccountBasicForResponse>;
-    thumbnailNotifi: string;
     department: {
         id: string;
         title: string;

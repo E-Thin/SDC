@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ContentAssetBlogController } from './content-asset-blog.controller';
+import { ContentAssetNewsController } from './content-asset-blog.controller';
 
-describe('ContentAssetBlogController', () => {
-  let controller: ContentAssetBlogController;
+describe('ContentAssetNewsController', () => {
+  let controller: ContentAssetNewsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ContentAssetBlogController],
+      controllers: [ContentAssetNewsController],
     }).compile();
 
-    controller = module.get<ContentAssetBlogController>(ContentAssetBlogController);
+    controller = module.get<ContentAssetNewsController>(ContentAssetNewsController);
   });
 
   it('should be defined', () => {

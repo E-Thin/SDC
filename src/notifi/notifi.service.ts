@@ -13,14 +13,12 @@ export class NotifiService {
       data: {
         title: notifiForCreate.title,
         content: notifiForCreate.content,
-        thumbnailNotifi: notifiForCreate.thumbnailNotifi,
         departmentId: notifiForCreate.departmentId,
       },
       select: {
         id: true,
         title: true,
         content: true,
-        thumbnailNotifi: true,
         account: {
           select: {
             id: true,
@@ -49,7 +47,6 @@ export class NotifiService {
         id: true,
         title: true,
         content: true,
-        thumbnailNotifi: true,
         account: {
           select: {
             id: true,
@@ -81,7 +78,6 @@ export class NotifiService {
         id: true,
         title: true,
         content: true,
-        thumbnailNotifi: true,
         department: {
           select: {
             id: true,
@@ -121,7 +117,6 @@ export class NotifiService {
         id: true,
         title: true,
         content: true,
-        thumbnailNotifi: true,
         account: {
           select: {
             id: true,

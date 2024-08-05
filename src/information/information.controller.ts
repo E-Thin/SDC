@@ -24,7 +24,7 @@ export class InformationController {
     }
 
     @Get(':id')
-    async getInformationById(id: string) {
+    async getInformationById(@Param('id') id: string) {
         return await this.informationService.getInformationById(id);
     }
 
@@ -32,14 +32,14 @@ export class InformationController {
     @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
     async updateInformation(@Body() inforForUpdate: InforForUpdate,
-    @Param() id: string) {
+    @Param('id') id: string) {
         return await this.informationService.updateInformation(id, inforForUpdate);
     }
 
     @Delete(':id')
     @UseGuards(AuthenticationGuard, AuthorizationGuard)
     @Roles(Role.Admin)
-    async deleteInformation(id: string) {
+    async deleteInformation(@Param('id') id: string) {
         return await this.informationService.deleteInformation(id);
     }
 

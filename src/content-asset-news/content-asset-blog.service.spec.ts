@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ContentAssetBlogService } from './content-asset-blog.service';
+import { ContentAssetNewsService } from './content-asset-blog.service';
 
-describe('ContentAssetBlogService', () => {
-  let service: ContentAssetBlogService;
+describe('ContentAssetNewsService', () => {
+  let service: ContentAssetNewsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ContentAssetBlogService],
+      providers: [ContentAssetNewsService],
     }).compile();
 
-    service = module.get<ContentAssetBlogService>(ContentAssetBlogService);
+    service = module.get<ContentAssetNewsService>(ContentAssetNewsService);
   });
 
   it('should be defined', () => {

@@ -1,5 +1,6 @@
 export class NewsForUpdate {
     title: string;
     body: string;
-    typenewsId: string;
+    description: string;
+    typenews: Array<string>;
 }
