@@ -20,13 +20,7 @@ export class NewsService {
         description: true,
         account: true,
         created_at: true,
-        typenews: {
-          select: {
-            id: true,
-            nameTypeNews: true,
-            description: true,
-          }
-        }
+        
       },
       orderBy: {
         created_at: 'desc',
@@ -45,13 +39,7 @@ export class NewsService {
         account: true,
         description: true,
         created_at: true,
-        typenews: {
-          select: {
-            id: true,
-            nameTypeNews: true,
-            description: true,
-          }
-        }
+        
       },
     });
   }
@@ -66,13 +54,7 @@ export class NewsService {
         body: newsForCreate.body,
         description: newsForCreate.description,
         thumbnailNews: newsForCreate.thumbnailNews,
-        typenews: Array.isArray(newsForCreate.typenewsId)
-        ? {
-            connect: newsForCreate.typenewsId.map(id => ({ id }))
-        }
-        : {
-            connect: { id: newsForCreate.typenewsId }
-        },        account: { connect: { id: account.id } },
+        account: { connect: { id: account.id } },
       },
       select: {
         id: true,
@@ -82,13 +64,7 @@ export class NewsService {
         views: true,
         description: true,
         created_at: true,
-        typenews: {
-          select: {
-            id: true,
-            nameTypeNews: true,
-            description: true,
-          }
-        }
+        
       },
     });
   }
@@ -103,13 +79,6 @@ export class NewsService {
         title: newsForUpdate.title,
         body: newsForUpdate.body,
         description: newsForUpdate.description,
-        typenews: Array.isArray(newsForUpdate.typenews)
-                ? {
-                    connect: newsForUpdate.typenews.map(id => ({ id }))
-                }
-                : {
-                    connect: { id: newsForUpdate.typenews }
-                },
       },
       select: {
         id: true,
@@ -119,7 +88,6 @@ export class NewsService {
         views: true,
         created_at: true,
         thumbnailNews: true,
-        typenews: true,
       },
     });
   }

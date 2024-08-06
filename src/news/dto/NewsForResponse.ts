@@ -8,11 +8,6 @@ export class NewsForResponse {
     description: string;
     thumbnailNews: string;
     views: number;
-    typenews: Array<{
-        id: string;
-        nameTypeNews: string;
-        description: string;
-    }>;
     created_at: Date;
     updated_at?: Date;
 }

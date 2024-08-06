@@ -52,7 +52,6 @@ model News {
   body        String  @db.Text
   description String  @db.Text
   views       Int?  @default(0)
-  typenews    TypeNews []
   image       Image[]
   account     Account[]
   created_at  DateTime   @default(now())
@@ -67,14 +66,6 @@ model ContentAssetNews {
   account    Account  @relation(fields: [accountId], references: [id])
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-}
-
-
-model TypeNews {
-  id            String    @id @default(uuid())
-  nameTypeNews  String
-  description   String
-  news          News[]
 }
 
 model Notifi {

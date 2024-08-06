@@ -4,7 +4,6 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RoleModule } from './role/role.module';
 import { UserModule } from './user/user.module';
 import { TokenModule } from './token/token.module';
-import { TypeNewsModule } from './type-news/type-news.module';
 import { DepartmentModule } from './department/department.module';
 import { NewsModule } from './news/news.module';
 import { NotifiModule } from './notifi/notifi.module';
@@ -30,7 +29,6 @@ import { PageViewModule } from './page-view/page-view.module';
     RoleModule,
     UserModule,
     TokenModule,
-    TypeNewsModule,
     DepartmentModule,
     NewsModule,
     NotifiModule,

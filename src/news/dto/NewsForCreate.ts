@@ -3,7 +3,6 @@ export class NewsForCreate {
     body: string;
     description: string;
     thumbnailNews: string;
-    typenewsId: Array<string>;
 }
 
 export class ImageUpload {
