@@ -182,21 +182,4 @@ export class AuthService {
     }
   }
 
-  async getProfileAccount(account: AccountForToken): Promise<AccountForFull> {
-    try {
-      return await this.prismaService.account.findUnique({
-        where: { id: account.id },
-        select: {
-          name: true,
-          email: true,
-          id: true,
-          roles: true,
-          phoneNumber: true,
-        },
-      });
-    } catch (error) {
-      console.error();
-      throw new BadRequestException('Cookie has expired');
-    }
-  }
 }
