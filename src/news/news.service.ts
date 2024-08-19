@@ -34,6 +34,7 @@ export class NewsService {
       select: {
         id: true,
         title: true,
+        thumbnailNews: true,
         body: true,
         views: true,
         account: true,

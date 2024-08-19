@@ -3,18 +3,19 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class PageViewService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) { }
 
-  async incrementPageView(id: string) {
-    await this.prismaService.pageView.update({
-      where: { id },
-      data: { views: { increment: 1 } },
+  async incrementPageView() {
+    await this.prismaService.pageView.upsert({
+      where: { id: '' }, // Tìm bản ghi với id là chuỗi rỗng
+      update: { views: { increment: 1 } }, // Cập nhật số lượt xem
+      create: { id: '', views: 1, pageName: 'Home Page' }, // Tạo bản ghi mới với pageName
     });
   }
 
-  async getPageView(id: string) {
+  async getPageView() {
     return this.prismaService.pageView.findFirst({
-      where: { id },
+      where: { id: '' }, // Tìm bản ghi với id là chuỗi rỗng
     });
   }
 }

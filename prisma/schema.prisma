@@ -73,7 +73,7 @@ model Notifi {
   title           String
   content         String  @db.Text
   account         Account[]
-  departmentId    String
+  departmentId    String?
   department      Department? @relation (fields: [departmentId], references: [id])
   created_at      DateTime   @default(now())
   updated_at      DateTime   @updatedAt

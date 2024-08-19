@@ -1,14 +1,17 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { NotifiForUpdate } from './dto/NotifiForUpdate';
 import { NotifiForCreate } from './dto/NotifiForCreate';
 import { NotifiForResponse } from './dto/NotifiForResponse';
+import { DEPARTMENT } from 'src/helpers/constant';
 
 @Injectable()
 export class NotifiService {
   constructor(private prismaService: PrismaService) {}
 
-  async createNotifi(notifiForCreate: NotifiForCreate): Promise<NotifiForResponse> {
+  async createNotifi(
+    notifiForCreate: NotifiForCreate,
+  ): Promise<NotifiForResponse> {
     return await this.prismaService.notifi.create({
       data: {
         title: notifiForCreate.title,
@@ -30,7 +33,6 @@ export class NotifiService {
           select: {
             id: true,
             title: true,
-            description: true,
             created_at: true,
             updated_at: true,
           },
@@ -82,7 +84,6 @@ export class NotifiService {
           select: {
             id: true,
             title: true,
-            description: true,
             created_at: true,
             updated_at: true,
           },
@@ -128,14 +129,13 @@ export class NotifiService {
           select: {
             id: true,
             title: true,
-            description: true,
             created_at: true,
             updated_at: true,
           },
         },
         created_at: true,
         updated_at: true,
-      }
+      },
     });
   }
 
@@ -146,6 +146,55 @@ export class NotifiService {
       },
       select: {
         id: true,
+      },
+    });
+  }
+
+  async getNotifiDaotao() {
+    return await this.prismaService.notifi.findMany({
+      where: {
+        department: { id: DEPARTMENT.DAO_TAO },
+      },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        department: {
+          select: {
+            id: true,
+            title: true,
+            created_at: true,
+            updated_at: true
+          }
+        },
+        account: true,
+        created_at: true,
+        updated_at: true
+      }
+    })
+    
+  }
+
+  async getNotifiTaiChinh() {
+    return await this.prismaService.notifi.findMany({
+      where: {
+        department: { id: DEPARTMENT.TAI_CHINH },
+      },
+      select: {
+        id: true,
+        title: true,
+      },
+    });
+  }
+
+  async getNotifiCTSV() {
+    return await this.prismaService.notifi.findMany({
+      where: {
+        department: { id: DEPARTMENT.CONG_TAC_SINH_VIEN },
+      },
+      select: {
+        id: true,
+        title: true,
       },
     });
   }

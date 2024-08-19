@@ -5,15 +5,13 @@ import { PageViewService } from './page-view.service';
 export class PageViewController {
   constructor(private readonly pageViewService: PageViewService) {}
 
-  @Post('increment/:id')
-  async incrementPageView(@Param('id') id: string) {
-    return await this.pageViewService.incrementPageView(id);
+  @Post('increment')
+  async incrementPageView() {
+    return await this.pageViewService.incrementPageView();
   }
 
-  @Get(':id')
-  async getPageView(@Param('id') id: string) {
-    return await this.pageViewService
-    
-    .getPageView(id);
+  @Get('view')
+  async getPageView() {
+    return await this.pageViewService.getPageView();
   }
 }
